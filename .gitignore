@@ -1,0 +1,13 @@
+
+# files cache OS mac
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+.afpDeleted*
+
+# Icon must ends with two \r.
+Icon
+
+# Configuration directory of PhpStorm
+.idea
