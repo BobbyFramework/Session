@@ -11,3 +11,7 @@ Icon
 
 # Configuration directory of PhpStorm
 .idea
+
+
+composer.phar
+/vendor/
