@@ -1,0 +1,6 @@
+{
+  "name": "BobbyFramework/Session",
+  "autoload": {
+    "psr-4": {"BobbyFramework\\Core\\Components\\Session\\": "src/"}
+  }
+}
