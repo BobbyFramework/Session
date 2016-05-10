@@ -1,6 +1,7 @@
 <?php
 namespace BobbyFramework\Core\Components\Session\Adapter;
 
+use BobbyFramework\Core\Components\Session\SessionAdapter;
 use BobbyFramework\Core\Components\Session\SessionAdapterInterface;
 
 /**
