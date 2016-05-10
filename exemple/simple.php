@@ -4,10 +4,12 @@ define('APP_PATH',realpath('..'));
 
 require APP_PATH . '/vendor/autoload.php';
 
+use BobbyFramework\Core\Components\Session\Adapter\Native;
+use BobbyFramework\Core\Components\Session\Session ;
 
-$sessionAdapter = new \BobbyFramework\Core\Components\Session\Adapter\Native();
-$session = new \BobbyFramework\Core\Components\Session\Session($sessionAdapter);
+$sessionAdapter = new Native();
+$session = new Session($sessionAdapter);
 
-$session->set('test',"jksQKJSKqlslqs");
+$session->set('test',"hello world");
 
 echo $session->get('test');
