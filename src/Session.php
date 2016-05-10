@@ -14,7 +14,6 @@ class Session implements SessionInterface, SessionAdapterInterface
 {
     private $_flash;
     private $_adapter;
-    private $_isStarted = false;
 
 
     /**
@@ -93,7 +92,7 @@ class Session implements SessionInterface, SessionAdapterInterface
 
     public function isStarted()
     {
-        return $this->_isStarted;
+        return $this->_adapter->isStarted();
     }
 
     public function setName($name)
