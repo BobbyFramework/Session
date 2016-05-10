@@ -2,6 +2,7 @@
 
 namespace BobbyFramework\Core\Components\Session;
 
+use BobbyFramework\Core\Components\Session\Adapter\Native;
 use BobbyFramework\Core\Components\Session\Flash\Flash;
 use BobbyFramework\Core\Components\Session\Flash\FlashInterface;
 
@@ -9,49 +10,45 @@ use BobbyFramework\Core\Components\Session\Flash\FlashInterface;
  * Class Session
  * @package BobbyFramework\Core\Components\Session
  */
-class Session implements SessionInterface, \IteratorAggregate, \Countable, \ArrayAccess
+class Session implements SessionInterface, SessionAdapterInterface
 {
     private $_flash;
+    private $_adapter;
+    private $_isStarted = false;
 
-    private $_keyUserData = 'user_data';
 
     /**
      * Session constructor.
      * @param FlashInterface|null $flash
      */
-    public function __construct(FlashInterface $flash = null)
+    public function __construct(SessionAdapterInterface $sessionAdapterInterface = null, FlashInterface $flash = null)
     {
-        $this->_flash = $flash ?: new Flash();
-    }
 
-    public function getId()
-    {
-        return session_id();
+        $this->_adapter = $sessionAdapterInterface ?: new Native();
+        $this->_flash = $flash ?: new Flash();
     }
 
     public function setId($value)
     {
-        session_id($value);
+        $this->_adapter->setId($value);
+
+        return $this;
     }
 
-    public function getName()
+    public function getId()
     {
-        return session_name();
+        return $this->_adapter->getId();
     }
 
-    public function setName($value)
+    public function set($attr, $value)
     {
-        session_name($value);
+        $this->_adapter->set($attr, $value);
+        return $this;
     }
 
-    public function destroy()
+    public function get($attr, $defaultValue = null)
     {
-        session_destroy();
-    }
-
-    public function getIterator()
-    {
-        return new SessionIterator;
+        return $this->_adapter->get($attr, $defaultValue);
     }
 
     public function getFlash()
@@ -59,80 +56,55 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable, \Arra
         return $this->_flash;
     }
 
-    public function offsetExists($offset)
+    public function remove($attr)
     {
-        return isset($_SESSION[$offset]);
-    }
-
-    public function offsetGet($offset)
-    {
-        return isset($_SESSION[$offset]) ? $_SESSION[$offset] : null;
-    }
-
-    public function offsetSet($offset, $item)
-    {
-        $_SESSION[$offset] = $item;
-    }
-
-    public function offsetUnset($offset)
-    {
-        unset($_SESSION[$offset]);
-    }
-
-    public function count()
-    {
-        return $this->getCount();
-    }
-
-    public function getCount()
-    {
-        return count($_SESSION);
-    }
-
-    public function setAttribute($attr, $value)
-    {
-        $_SESSION[$attr] = $value;
-    }
-
-    public function getAttribute($attr, $defaultValue = null)
-    {
-        return isset($_SESSION[$attr]) ? $_SESSION[$attr] : $defaultValue;
-    }
-
-    public function setAttributeUserData($attr, $value)
-    {
-        $_SESSION[$this->_keyUserData][$attr] = $value;
-    }
-
-    public function getAttributeUserData($attr, $defaultValue = null)
-    {
-        return isset($_SESSION[$this->_keyUserData][$attr]) ? $_SESSION[$this->_keyUserData][$attr] : $defaultValue;
-    }
-
-    public function destroyUserData()
-    {
-        unset($_SESSION[$this->_keyUserData]);
-    }
-
-    public function has($key)
-    {
-        return isset($_SESSION[$key]);
+        $this->_adapter->remove($attr);
     }
 
     public function removeAll()
     {
-        foreach (array_keys($_SESSION) as $key) {
-            $this->remove($key);
+        $this->_adapter->removeAll();
+    }
+
+    public function destroy()
+    {
+        if (true === $this->isStarted()) {
+            $this->_adapter->destroy();
+            return true;
         }
+        return false;
     }
 
-    public function remove($key)
+    public function has($attr)
     {
-        unset($_SESSION[$key]);
+        return $this->_adapter->has($attr);
     }
 
-    public function removeUserData($key)
+    public function start()
     {
-        unset($_SESSION[$this->_keyUserData][$key]);
+        $this->_adapter->start();
+    }
+
+    public function stop()
+    {
+        $this->_adapter->stop();
+    }
+
+
+    public function isStarted()
+    {
+        return $this->_isStarted;
+    }
+
+    public function setName($name)
+    {
+        $this->_adapter->setName($name);
+
+        return $this;
+    }
+
+    public function getName()
+    {
+        return $this->_adapter->getName();
     }
 }
