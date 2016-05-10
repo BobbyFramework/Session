@@ -11,8 +11,6 @@ abstract class SessionAdapter
 {
     protected $_name = null;
 
-    protected $started = false;
-
     public function getName()
     {
         return $this->_name;
@@ -21,7 +19,7 @@ abstract class SessionAdapter
     public function setName($name)
     {
         if (!preg_match('/^[a-zA-Z0-9]+$/', $name)) {
-            throw new InvalidArgumentException(
+            throw new \Exception(
                 'Name provided contains invalid characters; must be alphanumeric only'
             );
         }
