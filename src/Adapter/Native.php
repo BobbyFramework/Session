@@ -113,7 +113,7 @@ class Native extends SessionAdapter implements SessionAdapterInterface, \Countab
 
     public function remove($key)
     {
-        unset($_SESSION[$key]);
+       $this->offsetUnset($key);
     }
 
     public function has($key)
