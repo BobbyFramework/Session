@@ -15,14 +15,13 @@ class Session implements SessionInterface, SessionAdapterInterface
     private $_flash;
     private $_adapter;
 
-
     /**
      * Session constructor.
+     * @param SessionAdapterInterface|null $sessionAdapterInterface
      * @param FlashInterface|null $flash
      */
     public function __construct(SessionAdapterInterface $sessionAdapterInterface = null, FlashInterface $flash = null)
     {
-
         $this->_adapter = $sessionAdapterInterface ?: new Native();
         $this->_flash = $flash ?: new Flash();
     }
@@ -42,6 +41,7 @@ class Session implements SessionInterface, SessionAdapterInterface
     public function set($attr, $value)
     {
         $this->_adapter->set($attr, $value);
+        
         return $this;
     }
 
