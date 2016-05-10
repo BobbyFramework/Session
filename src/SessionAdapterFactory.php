@@ -11,7 +11,7 @@ class SessionAdapterFactory
         if(class_exists($className)) {
             return new $className();
         } else {
-            throw new Exception('Car type not found.');
+            throw new \Exception('Adapter type not found.');
         }
     }
 }
