@@ -12,7 +12,6 @@ use BobbyFramework\Core\Components\Session\SessionAdapterInterface;
  */
 class Native extends SessionAdapter implements SessionAdapterInterface, \Countable, \ArrayAccess, \IteratorAggregate
 {
-
     public function setName($name)
     {
         parent::setName($name);
@@ -26,7 +25,7 @@ class Native extends SessionAdapter implements SessionAdapterInterface, \Countab
 
     public function isStarted()
     {
-        return $this->_isStarted;
+        return parent::isStarted();
     }
 
     public function exist()
