@@ -10,7 +10,7 @@ namespace BobbyFramework\Core\Components\Session;
 abstract class SessionAdapter
 {
     protected $_name = null;
-    protected $_isStarted = false
+    protected $_isStarted = false;
 
     public function getName()
     {
