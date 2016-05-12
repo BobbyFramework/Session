@@ -1,10 +1,12 @@
 {
   "name": "BobbyFramework/Session",
   "description" : "Session class"
-  "authors" : {
-    "name": "nicolas wallerand",
-    "email" : "n.wallerand@gmail.com"
-  },
+  "authors" : [
+    {
+      "name": "nicolas wallerand",
+      "email" : "n.wallerand@gmail.com"
+    }
+  ],
   "autoload": {
     "psr-4": {"BobbyFramework\\Core\\Components\\Session\\": "src/"}
   },
