@@ -1,6 +1,6 @@
 {
   "name": "bobby-framework/session",
-  "description" : "Session class",
+  "description" : "A PHP session library",
   "authors": [
     {
       "name": "nicolas wallerand",
