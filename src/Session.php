@@ -89,7 +89,6 @@ class Session implements SessionInterface, SessionAdapterInterface
         $this->_adapter->stop();
     }
 
-
     public function isStarted()
     {
         return $this->_adapter->isStarted();
