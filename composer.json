@@ -11,7 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "BobbyFramework\\Core\\Components\\Session\\": "src/"
+      "BobbyFramework\\Session\\": "src/"
     }
   },
   "require":{

@@ -1,5 +1,5 @@
 <?php
-namespace BobbyFramework\Core\Components\Session;
+namespace BobbyFramework\Session;
 
 interface SessionInterface {
 

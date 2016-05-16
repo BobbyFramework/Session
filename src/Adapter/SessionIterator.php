@@ -1,5 +1,5 @@
 <?php
-namespace BobbyFramework\Core\Components\Session\Adapter;
+namespace BobbyFramework\Session\Adapter;
 
 class SessionIterator implements \Iterator
 {

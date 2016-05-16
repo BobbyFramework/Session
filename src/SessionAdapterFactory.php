@@ -1,9 +1,9 @@
 <?php
-namespace BobbyFramework\Core\Components\Session;
+namespace BobbyFramework\Session;
 
 /**
  * Class SessionAdapterFactory
- * @package BobbyFramework\Core\Components\Session
+ * @package BobbyFramework\Session
  */
 class SessionAdapterFactory
 {
@@ -15,7 +15,7 @@ class SessionAdapterFactory
      */
     public static function build($adapterName)
     {
-        $className = 'BobbyFramework\\Core\\Components\\Session\\Adapter\\' . ucfirst($adapterName);
+        $className = 'BobbyFramework\\Session\\Adapter\\' . ucfirst($adapterName);
 
 
         // Assuming Class files are already loaded using autoload concept

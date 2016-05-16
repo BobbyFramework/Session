@@ -1,8 +1,8 @@
 <?php
-namespace BobbyFramework\Core\Components\Session\Adapter;
+namespace BobbyFramework\Session\Adapter;
 
-use BobbyFramework\Core\Components\Session\SessionAdapter;
-use BobbyFramework\Core\Components\Session\SessionAdapterInterface;
+use BobbyFramework\Session\SessionAdapter;
+use BobbyFramework\Session\SessionAdapterInterface;
 
 /**
  * Created by PhpStorm.

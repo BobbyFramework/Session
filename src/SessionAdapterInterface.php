@@ -5,7 +5,7 @@
  * Date: 10/05/2016
  * Time: 12:55
  */
-namespace BobbyFramework\Core\Components\Session;
+namespace BobbyFramework\Session;
 
 interface SessionAdapterInterface
 {

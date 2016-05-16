@@ -1,14 +1,14 @@
 <?php
 
-namespace BobbyFramework\Core\Components\Session;
+namespace BobbyFramework\Session;
 
-use BobbyFramework\Core\Components\Session\Adapter\Native;
-use BobbyFramework\Core\Components\Session\Flash\Flash;
-use BobbyFramework\Core\Components\Session\Flash\FlashInterface;
+use BobbyFramework\Session\Adapter\Native;
+use BobbyFramework\Session\Flash\Flash;
+use BobbyFramework\Session\Flash\FlashInterface;
 
 /**
  * Class Session
- * @package BobbyFramework\Core\Components\Session
+ * @package BobbyFramework\Session
  */
 class Session implements SessionInterface, SessionAdapterInterface
 {

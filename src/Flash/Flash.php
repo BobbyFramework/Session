@@ -1,5 +1,5 @@
 <?php
-namespace BobbyFramework\Core\Components\Session\Flash;
+namespace BobbyFramework\Session\Flash;
 /**
  * Created by PhpStorm.
  * User: schosnipe
