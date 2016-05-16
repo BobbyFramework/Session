@@ -41,7 +41,7 @@ class Session implements SessionInterface, SessionAdapterInterface
     public function set($attr, $value)
     {
         $this->_adapter->set($attr, $value);
-        
+
         return $this;
     }
 
