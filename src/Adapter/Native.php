@@ -65,14 +65,14 @@ class Native extends SessionAdapter implements SessionAdapterInterface, \Countab
         session_id($value);
     }
 
-    public function set($attr, $value)
+    public function set($offset, $value)
     {
-        $this->offsetSet($attr, $value);
+        $this->offsetSet($offset, $value);
     }
 
-    public function get($attr, $defaultValue = null)
+    public function get($offset, $defaultValue = null)
     {
-        return $this->offsetGet($attr, $defaultValue);
+        return isset($_SESSION[$offset]) ? $_SESSION[$offset] : $defaultValue;
     }
 
     public function getIterator()
@@ -110,20 +110,20 @@ class Native extends SessionAdapter implements SessionAdapterInterface, \Countab
         return count($_SESSION);
     }
 
-    public function remove($key)
+    public function remove($offset)
     {
-       $this->offsetUnset($key);
+       $this->offsetUnset($offset);
     }
 
-    public function has($key)
+    public function has($offset)
     {
-        return $this->offsetExists($key);
+        return $this->offsetExists($offset);
     }
 
     public function removeAll()
     {
-        foreach (array_keys($_SESSION) as $key) {
-            $this->remove($key);
+        foreach (array_keys($_SESSION) as $offset) {
+            $this->remove($offset);
         }
     }
 
