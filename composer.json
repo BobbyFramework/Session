@@ -9,6 +9,7 @@
       "role": "Developer"
     }
   ],
+  "minimum-stability": "dev"
   "autoload": {
     "psr-4": {
       "BobbyFramework\\Session\\": "src/"
