@@ -10,7 +10,6 @@ namespace BobbyFramework\Session;
 abstract class SessionAdapter
 {
     protected $_name = null;
-    protected $_isStarted = false;
 
     public function getName()
     {
@@ -25,11 +24,6 @@ abstract class SessionAdapter
             );
         }
         $this->_name = $name;
-    }
-    
-    public function isStarted()
-    {
-        return $this->_isStarted;
     }
 }
 

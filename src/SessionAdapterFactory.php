@@ -17,7 +17,6 @@ class SessionAdapterFactory
     {
         $className = 'BobbyFramework\\Session\\Adapter\\' . ucfirst($adapterName);
 
-
         // Assuming Class files are already loaded using autoload concept
         if (class_exists($className)) {
             return new $className();
