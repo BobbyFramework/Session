@@ -1,7 +1,11 @@
 <?php
 namespace BobbyFramework\Session;
 
-interface SessionInterface {
-
+/**
+ * Interface SessionInterface
+ * @package BobbyFramework\Session
+ */
+interface SessionInterface
+{
 
 }

@@ -1,21 +1,30 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: schosnipe
- * Date: 10/05/2016
- * Time: 13:30
- */
+
 namespace BobbyFramework\Session;
 
+/**
+ * Class SessionAdapter
+ * @package BobbyFramework\Session
+ */
 abstract class SessionAdapter
 {
-    protected $_name = null;
+    /**
+     * @var null|string
+     */
+    protected $name = null;
 
+    /**
+     * @return null
+     */
     public function getName()
     {
-        return $this->_name;
+        return $this->name;
     }
 
+    /**
+     * @param $name
+     * @throws \Exception
+     */
     public function setName($name)
     {
         if (!preg_match('/^[a-zA-Z0-9]+$/', $name)) {
@@ -23,7 +32,6 @@ abstract class SessionAdapter
                 'Name provided contains invalid characters; must be alphanumeric only'
             );
         }
-        $this->_name = $name;
+        $this->name = $name;
     }
 }
-

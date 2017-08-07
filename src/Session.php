@@ -12,8 +12,15 @@ use BobbyFramework\Session\Flash\FlashInterface;
  */
 class Session implements SessionInterface, SessionAdapterInterface
 {
-    private $_flash;
-    private $_adapter;
+    /**
+     * @var Flash
+     */
+    private $flash;
+
+    /**
+     * @var Native
+     */
+    private $adapter;
 
     /**
      * Session constructor.
@@ -22,87 +29,136 @@ class Session implements SessionInterface, SessionAdapterInterface
      */
     public function __construct(SessionAdapterInterface $sessionAdapterInterface = null, FlashInterface $flash = null)
     {
-        $this->_adapter = $sessionAdapterInterface ?: new Native();
-        $this->_flash = $flash ?: new Flash();
+        $this->adapter = $sessionAdapterInterface ?: new Native();
+        $this->flash = $flash ?: new Flash();
     }
 
+    /**
+     * @param $value
+     * @return $this
+     */
     public function setId($value)
     {
-        $this->_adapter->setId($value);
+        $this->adapter->setId($value);
 
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getId()
     {
-        return $this->_adapter->getId();
+        return $this->adapter->getId();
     }
 
+    /**
+     * @param $attr
+     * @param $value
+     * @return $this
+     */
     public function set($attr, $value)
     {
-        $this->_adapter->set($attr, $value);
+        $this->adapter->set($attr, $value);
 
         return $this;
     }
 
+    /**
+     * @param $attr
+     * @param null $defaultValue
+     * @return null
+     */
     public function get($attr, $defaultValue = null)
     {
-        return $this->_adapter->get($attr, $defaultValue);
+        return $this->adapter->get($attr, $defaultValue);
     }
 
+    /**
+     * @return Flash
+     */
     public function getFlash()
     {
-        return $this->_flash;
+        return $this->flash;
     }
 
+    /**
+     * @param string $attr
+     */
     public function remove($attr)
     {
-        $this->_adapter->remove($attr);
+        $this->adapter->remove($attr);
     }
 
+    /**
+     *
+     */
     public function removeAll()
     {
-        $this->_adapter->removeAll();
+        $this->adapter->removeAll();
     }
 
+    /**
+     * @return bool
+     */
     public function destroy()
     {
         if (true === $this->isStarted()) {
-            $this->_adapter->destroy();
+            $this->adapter->destroy();
             return true;
         }
         return false;
     }
 
+    /**
+     * @param $attr
+     * @return bool
+     */
     public function has($attr)
     {
-        return $this->_adapter->has($attr);
+        return $this->adapter->has($attr);
     }
 
+    /**
+     *
+     */
     public function start()
     {
-        $this->_adapter->start();
+        $this->adapter->start();
     }
 
+    /**
+     *
+     */
     public function stop()
     {
-        $this->_adapter->stop();
+        $this->adapter->stop();
     }
 
+    /**
+     * @return bool
+     */
     public function isStarted()
     {
-        return $this->_adapter->isStarted();
+        return $this->adapter->isStarted();
     }
 
+    /**
+     * @param string $name
+     * @return $this
+     */
     public function setName($name)
     {
-        $this->_adapter->setName($name);
+        $this->adapter->setName($name);
 
         return $this;
     }
 
+    /**
+     * @return null
+     */
     public function getName()
     {
-        return $this->_adapter->getName();
+        return $this->adapter->getName();
     }
 }

@@ -5,10 +5,8 @@ use BobbyFramework\Session\SessionAdapter;
 use BobbyFramework\Session\SessionAdapterInterface;
 
 /**
- * Created by PhpStorm.
- * User: schosnipe
- * Date: 10/05/2016
- * Time: 12:57
+ * Class Native
+ * @package BobbyFramework\Session\Adapter
  */
 class Native extends SessionAdapter implements SessionAdapterInterface, \Countable, \ArrayAccess, \IteratorAggregate
 {

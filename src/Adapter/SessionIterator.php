@@ -1,23 +1,27 @@
 <?php
 namespace BobbyFramework\Session\Adapter;
 
+/**
+ * Class SessionIterator
+ * @package BobbyFramework\Session\Adapter
+ */
 class SessionIterator implements \Iterator
 {
     /**
      * @var array list of keys in the map
      */
-    private $_keys;
+    private $keys;
     /**
      * @var mixed current key
      */
-    private $_key;
+    private $key;
 
     /**
      * SessionIterator constructor.
      */
     public function __construct()
     {
-        $this->_keys = array_keys($_SESSION);
+        $this->keys = array_keys($_SESSION);
     }
 
     /**
@@ -26,7 +30,7 @@ class SessionIterator implements \Iterator
      */
     public function rewind()
     {
-        $this->_key = reset($this->_keys);
+        $this->key = reset($this->keys);
     }
 
     /**
@@ -36,7 +40,7 @@ class SessionIterator implements \Iterator
      */
     public function key()
     {
-        return $this->_key;
+        return $this->key;
     }
 
     /**
@@ -46,7 +50,7 @@ class SessionIterator implements \Iterator
      */
     public function current()
     {
-        return isset($_SESSION[$this->_key]) ? $_SESSION[$this->_key] : null;
+        return isset($_SESSION[$this->key]) ? $_SESSION[$this->key] : null;
     }
 
     /**
@@ -56,8 +60,8 @@ class SessionIterator implements \Iterator
     public function next()
     {
         do {
-            $this->_key = next($this->_keys);
-        } while (!isset($_SESSION[$this->_key]) && $this->_key !== false);
+            $this->key = next($this->keys);
+        } while (!isset($_SESSION[$this->key]) && $this->key !== false);
     }
 
     /**
@@ -67,6 +71,6 @@ class SessionIterator implements \Iterator
      */
     public function valid()
     {
-        return $this->_key !== false;
+        return $this->key !== false;
     }
 }

@@ -1,19 +1,26 @@
 <?php
 
 namespace BobbyFramework\Session\Flash;
-/**
- * Created by PhpStorm.
- * User: schosnipe
- * Date: 30/04/2016
- * Time: 21:11
- */
 
+/**
+ * Interface FlashInterface
+ * @package BobbyFramework\Session\Flash
+ */
 interface FlashInterface
 {
-
+    /**
+     * @param $value
+     * @return mixed
+     */
     public function set($value);
 
+    /**
+     * @return mixed
+     */
     public function get();
 
+    /**
+     * @return mixed
+     */
     public function has();
 }

@@ -1,20 +1,23 @@
 <?php
 namespace BobbyFramework\Session\Flash;
-/**
- * Created by PhpStorm.
- * User: schosnipe
- * Date: 30/04/2016
- * Time: 21:11
- */
 
+/**
+ * Class Flash
+ * @package BobbyFramework\Session\Flash
+ */
 class Flash implements FlashInterface
 {
-
+    /**
+     * @param $value
+     */
     public function set($value)
     {
         $_SESSION['flash'] = $value;
     }
 
+    /**
+     * @return mixed
+     */
     public function get()
     {
         $flash = $_SESSION['flash'];
@@ -22,6 +25,9 @@ class Flash implements FlashInterface
         return $flash;
     }
 
+    /**
+     * @return bool
+     */
     public function has()
     {
         return isset($_SESSION['flash']);
